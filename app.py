@@ -537,7 +537,7 @@ def stok_harcama():
                 urun_id,
                 "Harcandı",
                 miktar,
-                datetime.now().strftime("%d.%m.%Y %H:%M"),
+                datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y %H:%M"),
                 session["kullanici"]
             ))
 
