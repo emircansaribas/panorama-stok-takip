@@ -447,7 +447,7 @@ def stok_ekle():
             urun_id,
             "Eklendi",
             miktar,
-            datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y %H:%M")
+            datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y %H:%M"),
             session["kullanici"]
         ))
 
