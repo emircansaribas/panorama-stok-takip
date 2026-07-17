@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tüm Hareketler</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+table{
+    width:100%;
+    background:white;
+    border-collapse:collapse;
+}
+
+th{
+    background:#1f2937;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+
+.eklenen{
+
+    color:green;
+    font-weight:bold;
+
+}
+
+
+.harcandi{
+
+    color:red;
+    font-weight:bold;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="content">
+
+
+<h1>📋 Tüm Hareketler</h1>
+
+<br>
+
+
+<table>
+
+
+<tr>
+
+<th>Tarih</th>
+
+<th>Ürün</th>
+
+<th>İşlem</th>
+
+<th>Miktar</th>
+
+<th>Kullanıcı</th>
+
+</tr>
+
+
+
+{% for hareket in hareketler %}
+
+
+<tr>
+
+
+<td>{{ hareket[3] }}</td>
+
+
+<td>{{ hareket[6] }}</td>
+
+
+<td class="{% if hareket[2]=='Eklendi' %}eklenen{% else %}harcandi{% endif %}">
+
+{% if hareket[2]=="Eklendi" %}
+
+🟢 Eklendi
+
+{% else %}
+
+🔴 Harcandı
+
+{% endif %}
+
+
+</td>
+
+
+<td>{{ hareket[3] }}</td>
+
+
+<td>{{ hareket[5] }}</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</table>
+
+
+</div>
+
+
+</body>
+
+
+</html>

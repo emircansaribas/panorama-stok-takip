@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Yönetimi</title>
+</head>
+
+<body>
+
+<h1>Kullanıcı Yönetimi</h1>
+
+<p>Bu sayfadan kullanıcılar yönetilecek.</p>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>Kullanıcı</th>
+    <th>Yetki</th>
+</tr>
+
+{% for kullanici in kullanicilar %}
+
+<tr>
+
+<td>{{ kullanici[1] }}</td>
+
+<td>{{ kullanici[3] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

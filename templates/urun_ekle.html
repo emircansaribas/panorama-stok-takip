@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ürün Ekle - Panorama Stok Takip</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="content">
+
+<h1>📦 Yeni Ürün Ekle</h1>
+
+<br>
+
+
+<form method="POST">
+
+
+<label>Ürün Adı</label>
+
+<br>
+
+<input type="text" name="urun_adi" required>
+
+
+<br><br>
+
+
+<label>Kategori</label>
+
+<br>
+
+<select name="kategori">
+
+<option>Mutfak</option>
+
+<option>Temizlik Ürünleri</option>
+
+<option>Bar</option>
+
+<option>Soft İçecekler</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Başlangıç Stoğu</label>
+
+<br>
+
+<input type="number" name="stok" value="0" required>
+
+
+<br><br>
+
+
+<label>Kritik Stok Seviyesi</label>
+
+<br>
+
+<input type="number" name="kritik" value="5" required>
+
+
+<br><br>
+
+
+<button type="submit">
+
+Ürünü Kaydet
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</body>
+
+</html>

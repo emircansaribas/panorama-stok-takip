@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panorama Stok Takip</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<div class="login-box">
+
+<h1>Panorama Stok Takip</h1>
+
+<h3>Düğün Salonu Yönetim Sistemi</h3>
+
+<form method="POST">
+
+<label>Kullanıcı Adı</label>
+
+<input type="text" name="kullanici" required>
+
+<label>Şifre</label>
+
+<input type="password" name="sifre" required>
+
+<button type="submit">Giriş Yap</button>
+
+</form>
+
+{% if hata %}
+<p style="color:red;text-align:center;margin-top:15px;">
+{{ hata }}
+</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>

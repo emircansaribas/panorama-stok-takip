@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Harcanan Stoklar</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="content">
+
+    <h1>🔴 Harcanan Stoklar</h1>
+
+    <br>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+
+        <tr>
+            <th>Ürün</th>
+            <th>Miktar</th>
+            <th>Tarih</th>
+            <th>Kullanıcı</th>
+        </tr>
+
+        {% for hareket in hareketler %}
+
+        <tr>
+
+            <td>{{ hareket[1] }}</td>
+            <td>{{ hareket[2] }}</td>
+            <td>{{ hareket[3] }}</td>
+            <td>{{ hareket[4] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

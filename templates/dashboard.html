@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Panorama Stok Takip</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    display:flex;
+    background:#f3f4f6;
+
+}
+
+
+/* SOL MENÜ */
+
+.sidebar{
+
+    width:250px;
+    min-height:100vh;
+    background:#1f2937;
+    color:white;
+    padding:20px;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+    margin-bottom:40px;
+
+}
+
+
+.menu a{
+
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+
+}
+
+
+.menu a:hover{
+
+    background:#374151;
+
+}
+
+
+
+/* ANA ALAN */
+
+.content{
+
+    flex:1;
+    padding:30px;
+
+}
+
+
+
+.top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+
+
+.logout{
+
+    background:#dc2626;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+
+}
+
+
+
+/* KARTLAR */
+
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:30px;
+
+}
+
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+
+.card h2{
+
+    font-size:35px;
+    margin-top:15px;
+
+}
+
+
+
+.green{
+
+    color:green;
+
+}
+
+
+.red{
+
+    color:red;
+
+}
+
+
+.orange{
+
+    color:orange;
+
+}
+
+
+.blue{
+
+    color:#2563eb;
+
+}
+
+
+
+/* MOBİL */
+
+@media(max-width:800px){
+
+
+body{
+
+    flex-direction:column;
+
+}
+
+
+.sidebar{
+
+    width:100%;
+    min-height:auto;
+
+}
+
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+
+}
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="sidebar">
+
+
+<div class="logo">
+
+Panorama
+
+</div>
+
+
+
+<div class="menu">
+
+
+<a href="/dashboard">
+🏠 Ana Sayfa
+</a>
+
+
+<a href="/stoklar">
+📦 Toplam Stok
+</a>
+
+
+<a href="/eklenenler">
+🟢 Eklenen Stoklar
+</a>
+
+
+<a href="/harcananlar">
+🔴 Harcanan Stoklar
+</a>
+
+
+<a href="/hareketler">
+    📋 Tüm Hareketler
+</a>
+
+{% if session["yetki"] == "admin" %}
+
+<a href="/kullanicilar">
+    👥 Kullanıcı Yönetimi
+</a>
+
+{% endif %}
+
+
+{% if session["yetki"] == "admin" %}
+
+
+<a href="/urun_ekle">
+➕ Ürün Ekle
+</a>
+
+
+<a href="/stok_ekle">
+⬆️ Stok Girişi
+</a>
+
+
+<a href="/stok_harcama">
+⬇️ Stok Çıkışı
+</a>
+
+
+{% endif %}
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="content">
+
+
+
+<div class="top">
+
+
+<h1>
+Hoş Geldiniz {{ kullanici }} 👋
+</h1>
+
+
+
+<a class="logout" href="/logout">
+
+Çıkış Yap
+
+</a>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+<p>
+Panorama Stok Takip Yönetim Paneli
+</p>
+
+
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+Toplam Ürün
+
+<h2 class="blue">
+
+{{ toplam_urun }}
+
+</h2>
+
+</div>
+
+
+
+
+<div class="card">
+
+Toplam Stok
+
+<h2>
+
+{{ toplam_stok }}
+
+</h2>
+
+</div>
+
+
+
+<div class="card">
+
+Eklenen Stok
+
+<h2 class="green">
+
+{{ eklenen }}
+
+</h2>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+Harcanan Stok
+
+<h2 class="red">
+
+{{ harcanan }}
+
+</h2>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+Kritik Stok
+
+<h2 class="orange">
+
+{{ kritik }}
+
+</h2>
+
+</div>
+
+
+
+</div>
+
+<br><br>
+
+<h2>📋 Son 5 Hareket</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="width:100%; background:white; border-collapse:collapse;">
+
+    <tr style="background:#1f2937; color:white;">
+        <th>Ürün</th>
+        <th>İşlem</th>
+        <th>Miktar</th>
+        <th>Tarih</th>
+    </tr>
+
+    {% for hareket in son_hareketler %}
+
+    <tr>
+
+        <td>{{ hareket[0] }}</td>
+
+        {% if hareket[1] == "Eklendi" %}
+            <td style="color:green;"><b>{{ hareket[1] }}</b></td>
+        {% else %}
+            <td style="color:red;"><b>{{ hareket[1] }}</b></td>
+        {% endif %}
+
+        <td>{{ hareket[2] }}</td>
+        <td>{{ hareket[3] }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+<br><br>
+
+<h2>📊 Stok Durumu Grafiği</h2>
+
+<canvas id="stokGrafik"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+
+
+const ctx = document.getElementById('stokGrafik');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: [
+            'Toplam Stok',
+            'Eklenen',
+            'Harcanan'
+        ],
+
+        datasets: [{
+
+            label: 'Miktar',
+
+            data: [
+                {{ toplam_stok }},
+                {{ eklenen }},
+                {{ harcanan }}
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+</script>
+
+
+
+<br><br>
+
+<h2>⚠️ Kritik Stoktaki Ürünler</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="width:100%; background:white; border-collapse:collapse;">
+
+<tr style="background:#dc2626; color:white;">
+
+<th>Ürün</th>
+<th>Mevcut Stok</th>
+<th>Kritik Seviye</th>
+
+</tr>
+
+
+{% for urun in kritik_urunler %}
+
+<tr>
+
+<td>{{ urun[0] }}</td>
+
+<td style="color:red;">
+<b>{{ urun[1] }}</b>
+</td>
+
+<td>{{ urun[2] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

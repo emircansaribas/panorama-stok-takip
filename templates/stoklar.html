@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Toplam Stok</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="content">
+
+<h1>📦 Toplam Stok</h1>
+
+<br>
+<form method="GET">
+
+    <input
+        type="text"
+        name="arama"
+        placeholder="🔍 Ürün Ara..."
+        value="{{ arama }}"
+    >
+
+    <button type="submit">
+        Ara
+    </button>
+
+</form>
+
+<br>
+
+<a href="/excel_aktar">
+    <button type="button">
+        📥 Excel'e Aktar
+    </button>
+</a>
+
+<br><br>
+
+<a href="/pdf_rapor">
+    <button type="button">
+        📄 PDF Rapor
+    </button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+
+<tr>
+
+<th>Ürün</th>
+<th>Kategori</th>
+<th>Stok</th>
+<th>Kritik Seviye</th>
+<th>İşlem</th>
+
+</tr>
+
+{% for urun in urunler %}
+
+{% if urun[3] <= urun[4] %}
+<tr style="background:#ffdddd;">
+{% else %}
+<tr>
+{% endif %}
+
+<td>{{ urun[1] }}</td>
+<td>{{ urun[2] }}</td>
+
+<td>
+{% if urun[3] <= urun[4] %}
+    <b style="color:red;">{{ urun[3] }}</b>
+{% else %}
+    {{ urun[3] }}
+{% endif %}
+</td>
+
+<td>{{ urun[4] }}</td>
+
+<td>
+    <a href="/urun_duzenle/{{ urun[0] }}">
+        ✏️ Düzenle
+    </a>
+
+    |
+
+    <a href="/urun_sil/{{ urun[0] }}"
+       onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?')">
+        🗑️ Sil
+    </a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

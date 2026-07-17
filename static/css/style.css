@@ -1,0 +1,129 @@
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+    body{
+    background:#1f2937;
+    color:white;
+}
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+        .login-box{
+            background:#2a2a40;
+            width:420px;
+            padding:40px;
+            border-radius:15px;
+            box-shadow:0 0 25px rgba(0,0,0,.4);
+        }
+
+        table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    color:black;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+
+td{
+    color:black;
+    padding:10px;
+}
+
+tr:nth-child(even){
+    background:#f3f4f6;
+}
+
+        h1{
+            color:white;
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        h3{
+            color:#bdbdbd;
+            text-align:center;
+            margin-bottom:30px;
+            font-weight:normal;
+        }
+
+        label{
+            color:white;
+            display:block;
+            margin-bottom:8px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-bottom:20px;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            background:#16a34a;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#15803d;
+        }
+
+        .footer{
+            color:#999;
+            text-align:center;
+            margin-top:20px;
+            font-size:13px;
+        }
+    </style>
+
+ table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    color:black;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+
+td{
+    color:black;
+    padding:10px;
+}
+
+tr:nth-child(even){
+    background:#f3f4f6;
+}
+
+input{
+    padding:10px;
+    border-radius:6px;
+}
+
+button{
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}

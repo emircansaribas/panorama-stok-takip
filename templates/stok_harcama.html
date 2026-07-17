@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stok Harcama</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="content">
+
+
+<h1>🔴 Stok Harcama</h1>
+
+<br>
+
+
+<form method="POST">
+
+
+<label>Ürün Seç</label>
+
+<br>
+
+<select name="urun_id">
+
+{% for urun in urunler %}
+
+<option value="{{ urun[0] }}">
+{{ urun[1] }} (Mevcut: {{ urun[3] }})
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<br><br>
+
+
+<label>Harcanan Miktar</label>
+
+<br>
+
+<input type="number" name="miktar" required>
+
+
+<br><br>
+
+
+<button type="submit">
+
+Stoktan Düş
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</body>
+
+</html>
