@@ -1,4 +1,5 @@
-from flask import Flask, from zoneinfo import ZoneInfo, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session
+from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
 
