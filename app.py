@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, from zoneinfo import ZoneInfo, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
 
@@ -446,7 +446,7 @@ def stok_ekle():
             urun_id,
             "Eklendi",
             miktar,
-            datetime.now().strftime("%d.%m.%Y %H:%M"),
+            datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y %H:%M")
             session["kullanici"]
         ))
 
